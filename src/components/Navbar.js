@@ -50,17 +50,28 @@ async function connectWebsite() {
 }
 
   useEffect(() => {
-    let val = window.ethereum.isConnected();
-    if(val)
+    let value;
+    try {
+      let val = window.ethereum.isConnected();
+      if(val){
+        value=val
+      }
+      window.ethereum.on('accountsChanged', function(accounts){
+        window.location.replace(location.pathname)
+      })
+
+    } catch (error) {
+      
+    }
+
+    if(value)
     {
       getAddress();
-      toggleConnect(val);
+      toggleConnect(value);
       updateButton();
     }
 
-    window.ethereum.on('accountsChanged', function(accounts){
-      window.location.replace(location.pathname)
-    })
+  
   });
 
     return (
