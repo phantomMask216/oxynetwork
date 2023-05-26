@@ -5,6 +5,3 @@ cd oxynetwork
 npm install
 
 npm start
-
-
-hihdsfhasl;dkf
